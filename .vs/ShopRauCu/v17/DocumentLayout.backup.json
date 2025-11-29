@@ -1,0 +1,258 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\filters\\adminauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\filters\\adminauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\wwwroot\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\wwwroot\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|d:\\webc#\\doanshopraucu\\shopraucu\\shopraucu\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{934D5A01-F6E0-47A8-8478-5472388F0F69}|ShopRauCu\\ShopRauCu.csproj|solutionrelative:shopraucu\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminAuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Filters\\AdminAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "ShopRauCu\\Filters\\AdminAuthorizeAttribute.cs",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Filters\\AdminAuthorizeAttribute.cs",
+              "RelativeToolTip": "ShopRauCu\\Filters\\AdminAuthorizeAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T10:34:05.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T10:32:28.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T10:31:02.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ShopRauCu\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ShopRauCu\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAAwF8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T10:30:16.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Program.cs",
+              "RelativeDocumentMoniker": "ShopRauCu\\Program.cs",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Program.cs",
+              "RelativeToolTip": "ShopRauCu\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAvwB0AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T05:34:10.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "ShopRauCu\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "ShopRauCu\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T18:17:54.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T18:07:18.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\appsettings.json",
+              "RelativeDocumentMoniker": "ShopRauCu\\appsettings.json",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\appsettings.json",
+              "RelativeToolTip": "ShopRauCu\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-26T18:04:56.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T18:02:45.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "bootstrap.min.css",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\wwwroot\\css\\bootstrap.min.css",
+              "RelativeDocumentMoniker": "ShopRauCu\\wwwroot\\css\\bootstrap.min.css",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\wwwroot\\css\\bootstrap.min.css",
+              "RelativeToolTip": "ShopRauCu\\wwwroot\\css\\bootstrap.min.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAB6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-29T10:35:21.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T18:22:30.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADMCAAAAAAAAAAAAAFICAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T18:23:15.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ShopRauCu\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ShopRauCu\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-26T18:05:34.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "ShopRauCu\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\WebC#\\DoAnShopRauCu\\ShopRauCu\\ShopRauCu\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "ShopRauCu\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T18:02:44.948Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
