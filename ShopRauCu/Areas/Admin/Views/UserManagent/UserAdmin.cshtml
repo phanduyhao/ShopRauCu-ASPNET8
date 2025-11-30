@@ -1,0 +1,227 @@
+﻿@model IEnumerable<ShopRauCu.Models.User>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Danh sách tài khoản quản trị";
+}
+
+<div>
+    <h3 class="fw-bold text-primary py-3 mb-4">@ViewData["Title"]</h3>
+    @if (TempData["modelErrors"] != null)
+{
+    <pre>@TempData["modelErrors"]</pre>
+}
+    <div class="card">
+        <div class="d-flex p-4 justify-content-between">
+            <h5 class="fw-bold">Danh sách tài khoản quản trị</h5>
+            <button type="button" class="btn btn-success text-dark px-2 py-1 fw-bolder"
+                    data-bs-toggle="modal" data-bs-target="#createUser">
+                Thêm mới
+            </button>
+        </div>
+
+        <!-- Modal Create -->
+        <div class="modal fade" id="createUser" tabindex="-1" aria-labelledby="createUserLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Thêm mới tài khoản quản trị</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="form_add_admin" method="post"
+                              action="@Url.Action("Create", "UserManagent", new { area = "Admin" })"
+                              class="form-create">
+                            @Html.AntiForgeryToken()
+                            <input type="text" hidden value="Admin" name="Role" />
+                            <div class="mb-3">
+                                <label class="form-label">Tên</label>
+                                <input type="text" class="form-control input-field" placeholder="Nhập tên"  data-require='Mời nhập tên'
+                                       name="Name" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control input-field" placeholder="Nhập Email" data-require='Mời nhập email'
+                                       name="Email" value=" " />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control input-field" placeholder="Nhập mật khẩu" data-require='Mời nhập mật khẩu'
+                                       name="Password" value=" " />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-control input-field" placeholder="Nhập Số điện thoại" data-require='Mời nhập SĐT'
+                                       name="Phone" value=" " />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success fw-semibold text-dark">Thêm mới</button>
+                                <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end modal create -->
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th>Quyền</th>
+                        <th>Thời gian tạo</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-border-bottom-0">
+                    @foreach (var user in Model.Select((u, i) => new { u, i }))
+                    {
+                        <tr data-id="@user.u.Id">
+                            <td>@user.u.Id</td>
+                            <td>@user.u.Name</td>
+                            <td>@user.u.Email</td>
+                            <td>@user.u.Phone</td>
+                            <td>@user.u.Role</td>
+                            <td>@user.u.CreatedAt</td>
+
+                            <td>
+                                <button type="button"
+                                        class="btn btn-danger btnDeleteAsk px-2 me-2 py-1 fw-bolder"
+                                        data-id="@user.u.Id"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">
+                                    Xóa
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-info btnEditUser text-dark px-2 py-1 fw-bolder"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editUser-@user.u.Id">
+                                    Sửa
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @foreach (var user in Model)
+        {
+            <div class="modal fade" id="editUser-@user.Id" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Chỉnh sửa tài khoản</h1>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="form-update-admin-@user.Id" method="post"
+                                  action="@Url.Action("Edit", "UserManagent", new { area = "Admin", id = user.Id })"
+                                  class="form-update">
+
+                                @Html.AntiForgeryToken()
+                                <input type="text" hidden value="Admin" name="Role" />
+
+                                <div class="mb-3">
+                                    <label class="form-label">Tên</label>
+                                    <input type="text"
+                                           class="form-control input-field"
+                                           name="Name"
+                                           value="@user.Name"
+                                           data-require="Mời nhập tên" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email"
+                                           class="form-control input-field"
+                                           name="Email"
+                                           value="@user.Email"
+                                           data-require="Mời nhập email" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Mật khẩu</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="Password"
+                                           placeholder="@user.Password" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Số điện thoại</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="Phone"
+                                           value="@user.Phone" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success text-dark">Cập nhật</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Bạn có chắc chắn muốn xóa?</h1>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="btnDeleteConfirm" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let deleteUserId = null;
+
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("btnDeleteAsk")) {
+            deleteUserId = e.target.getAttribute("data-id");
+        }
+
+        if (e.target.id === "btnDeleteConfirm" && deleteUserId) {
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch(`/Admin/UserManagent/Delete/${deleteUserId}`, {
+                method: "POST",
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+            .then(res => {
+                if (res.ok) location.reload();
+                else alert("Xóa thất bại!");
+            });
+        }
+    });
+
+</script>

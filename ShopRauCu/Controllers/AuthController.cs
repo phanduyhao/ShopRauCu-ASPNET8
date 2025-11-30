@@ -30,14 +30,14 @@ namespace ShopRauCu.Controllers
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password))
             {
-                TempData["Error"] = "Vui lòng điền đầy đủ thông tin!";
+                TempData["ErrorAuth"] = "Vui lòng điền đầy đủ thông tin!";
                 return View();
             }
 
             // Kiểm tra email đã tồn tại
             if (await _context.Users.AnyAsync(u => u.Email == email))
             {
-                TempData["Error"] = "Email đã được đăng ký!";
+                TempData["ErrorAuth"] = "Email đã được đăng ký!";
                 return View();
             }
 
@@ -55,7 +55,7 @@ namespace ShopRauCu.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Đăng ký thành công! Bạn có thể đăng nhập.";
+            TempData["SuccessAuth"] = "Đăng ký thành công! Bạn có thể đăng nhập.";
             return RedirectToAction("Login");
         }
 
@@ -73,7 +73,7 @@ namespace ShopRauCu.Controllers
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                TempData["Error"] = "Vui lòng điền đầy đủ thông tin!";
+                TempData["ErrorAuth"] = "Vui lòng điền đầy đủ thông tin!";
                 return View();
             }
 
@@ -83,7 +83,7 @@ namespace ShopRauCu.Controllers
 
             if (user == null)
             {
-                TempData["Error"] = "Email hoặc mật khẩu không đúng!";
+                TempData["ErrorAuth"] = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
 

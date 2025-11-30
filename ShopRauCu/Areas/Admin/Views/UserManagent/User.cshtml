@@ -1,0 +1,103 @@
+﻿@model IEnumerable<ShopRauCu.Models.User>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Danh sách tài khoản người dùng";
+}
+
+<div>
+    <h3 class="fw-bold text-primary py-3 mb-4">@ViewData["Title"]</h3>
+
+    <div class="card">
+        <div class="d-flex p-4 justify-content-between">
+            <h5 class="fw-bold">Danh sách tài khoản người dùng</h5>
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Avatar</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th>Quyền</th>
+                        <th>Thời gian tạo</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-border-bottom-0">
+                    @foreach (var user in Model)
+                    {
+                        <tr data-id="@user.Id">
+                            <td>@user.Id</td>
+                            <td>@user.Avatar</td>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>@user.Phone</td>
+                            <td>@user.Role</td>
+                            <td>@user.CreatedAt</td>
+
+                            <td>
+                                <button type="button"
+                                        class="btn btn-danger px-2 py-1 fw-bolder btnDeleteAsk"
+                                        data-id="@user.Id"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">
+                                    Xóa
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Pagination: nếu bạn dùng PagedList -->
+            @* @Html.PagedListPager(Model, page => Url.Action("UserAdmin", new { page })) *@
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Bạn có chắc chắn muốn xóa vĩnh viễn?</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnDeleteConfirm" class="btn btn-danger">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let deleteUserId = null;
+
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("btnDeleteAsk")) {
+            deleteUserId = e.target.getAttribute("data-id");
+        }
+
+        if (e.target.id === "btnDeleteConfirm" && deleteUserId) {
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch(`/Admin/UserManagent/Delete/${deleteUserId}`, {
+                method: "POST",
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+            .then(res => {
+                if (res.ok) location.reload();
+                else alert("Xóa thất bại!");
+            });
+        }
+    });
+
+</script>

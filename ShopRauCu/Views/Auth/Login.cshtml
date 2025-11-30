@@ -10,13 +10,13 @@
                     <h3>Đăng nhập</h3>
                 </div>
                 <div class="card-body">
-                    @if (TempData["Error"] != null)
+                    @if (TempData["ErrorAuth"] != null)
                     {
-                        <div class="alert alert-danger">@TempData["Error"]</div>
+                        <div class="alert alert-danger">@TempData["ErrorAuth"]</div>
                     }
-                    @if (TempData["Success"] != null)
+                    @if (TempData["SuccessAuth"] != null)
                     {
-                        <div class="alert alert-success">@TempData["Success"]</div>
+                        <div class="alert alert-success">@TempData["SuccessAuth"]</div>
                     }
 
                     <form method="post" asp-action="Login">

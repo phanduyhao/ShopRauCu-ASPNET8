@@ -9,6 +9,7 @@ namespace ShopRauCu.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.dashboard = "active";
             return View();
         }
     }
