@@ -1,0 +1,69 @@
+﻿@model List<ShopRauCu.Models.Category>
+<style>
+    /* 1. Căn bản cho submenu */
+    .dropdown-submenu {
+        position: relative; /* để submenu con xuất hiện theo danh mục cha */
+    }
+
+        .dropdown-submenu .dropdown-menu-cate2 {
+            display: none; /* ẩn mặc định */
+            position: absolute; /* xuất hiện ở bên cạnh */
+            top: 0;
+            left: 100%; /* nằm sang phải của danh mục cha */
+            margin-top: -1px; /* canh đúng viền */
+            z-index: 1000;
+            min-width: 200px; /* có thể chỉnh theo ý bạn */
+        }
+
+        /* 2. Khi hover vào danh mục cha thì show menu con */
+        .dropdown-submenu:hover .dropdown-menu-cate2 {
+            display: block;
+        }
+
+    /* 3. Optional: style cho menu con */
+    .dropdown-menu-cate2 {
+        background-color: #f8f9fa; /* nền nhẹ hơn hoặc cùng theme */
+        border: 1px solid #ddd;
+        padding: 0;
+    }
+
+        .dropdown-menu-cate2 li a {
+            padding: 0.5rem 1rem;
+            display: block;
+            color: #000;
+            white-space: nowrap; /* không xuống dòng */
+        }
+
+            .dropdown-menu-cate2 li a:hover {
+                background-color: #e9ecef;
+            }
+
+</style>
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Cửa hàng</a>
+    <div class="dropdown-menu m-0 bg-secondary rounded-0">
+        @foreach (var cat1 in Model)
+        {
+            if (cat1.InverseParent.Any())
+            {
+                <div class="dropdown-submenu position-relative">
+                    <a href="@Url.Action("Index", "Product", new { category = cat1.Slug })" class="dropdown-item dropdown-toggle drop-item-child">@cat1.Title</a>
+                    <ul class="dropdown-menu-cate2 " style="list-style-type: none">
+                        @foreach (var cat2 in cat1.InverseParent)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Product", new { category = cat2.Slug })" class="dropdown-item">
+                                    @cat2.Title
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Product", new { category = cat1.Slug })" class="dropdown-item">@cat1.Title</a>
+            }
+        }
+    </div>
+</div>
