@@ -1,0 +1,439 @@
+﻿@model IEnumerable<ShopRauCu.Models.Product>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+<style>
+    .cke_contents.cke_reset{
+        height:450px !important;
+    }
+</style>
+<div>
+    <h3 class="fw-bold text-primary py-3 mb-4">@ViewData["Title"]</h3>
+
+    @if (TempData["modelErrors"] != null)
+    {
+        <pre>@TempData["modelErrors"]</pre>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger mt-2">
+            @TempData["error"]
+        </div>
+    }
+
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success mt-2">
+            @TempData["success"]
+        </div>
+    }
+
+    <div class="card">
+        <div class="d-flex p-4 justify-content-between">
+            <button type="button" class="btn btn-success text-dark px-2 py-1 fw-bolder"
+                    data-bs-toggle="modal" data-bs-target="#createProduct">
+                Thêm mới
+            </button>
+        </div>
+
+        <div class="modal fade" id="createProduct" tabindex="-1" aria-labelledby="createProductLabel" aria-hidden="true" style="overflow-x:hidden !important">
+            <div class="modal-dialog" style="max-width: 1440px">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom">
+                        <h1 class="modal-title fs-5" id="createProductLabel">Thêm mới sản phẩm.</h1>
+                    </div>
+
+                    <div class="nav mt-3 d-flex justify-content-center" id="nav-tab" role="tablist">
+                        <button class="nav-link text-uppercase border-0 bg-white fw-bold active me-3"
+                                id="basic-info-tab" data-bs-toggle="tab" data-bs-target="#basic-info"
+                                type="button" role="tab">
+                            Thông tin cơ bản
+                        </button>
+
+                        <button class="nav-link me-3 text-uppercase border-0 bg-white fw-bold"
+                                id="content-details-tab" data-bs-toggle="tab" data-bs-target="#content-details"
+                                type="button" role="tab">
+                            Nội dung chi tiết
+                        </button>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form id="form_product_store" class="form-create"
+                              method="post" enctype="multipart/form-data"
+                              action="@Url.Action("Create", "ProductManagement", new { area = "Admin" })">
+                              @Html.AntiForgeryToken()
+
+                            <div class="tab-content" id="nav-tabContent">
+                                <!-- TAB 1: Thông tin cơ bản -->
+                                <div class="tab-pane fade show active" id="basic-info" role="tabpanel">
+
+                                    <!-- Upload hình -->
+                                    <div class="mb-3 d-flex flex-column image-gallery" id="image-gallery-form_product_store">
+                                        <label class="form-label">Ảnh</label>
+
+                                        <input type="file" name="Thumb" class="file-input" id="file-input-form_product_store" multiple onchange="previewImages(event, 'form_product_store')">
+                                        <div class="image-preview" id="image-preview-form_product_store"></div>
+                                    </div>
+
+                                    <div class='mb-3 w-100 me-3'>
+                                        <label class='form-label'>Tên sản phẩm</label>
+                                        <input type='text' class='form-control title input-field'
+                                               id='title-store'
+                                               placeholder='Nhập Tên sản phẩm'
+                                               name='Title' />
+                                    </div>
+
+                                    <div class='mb-3 w-100'>
+                                        <label class='form-label'>Slug</label>
+                                        <input type='text' class='form-control slug input-field'
+                                               id='slug-store'
+                                               placeholder='Nhập Slug'
+                                               name='Slug' />
+                                    </div>
+
+                                    <!-- Danh mục -->
+                                    <div class="form-group mb-3">
+                                        <label class='form-label'>Danh mục</label>
+                                        <select name="CategoryId" class="form-control" id="cate_id">
+                                            <option value="">Chọn danh mục</option>
+                                            @foreach (var cate in ViewBag.Category)
+                                            {
+                                                <option value="@cate.Id">@cate.Id - @cate.Title</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex mb-3">
+                                        <div class='me-3'>
+                                            <label class='form-label'>Giá gốc (VND)</label>
+                                            <input type='text' id='price' class='form-control' name='OriginPrice' />
+                                        </div>
+
+                                        <div class='me-3'>
+                                            <label class='form-label'>Giá giảm (VND)</label>
+                                            <input type='text' id='discount' class='form-control' name='DiscountPrice' />
+                                        </div>
+                                        <div class='me-3'>
+                                            <label class='form-label'>Số lượng</label>
+                                            <input type='number' id='amount' class='form-control' name='Amounts' />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex mb-3">
+                                        <div class="form-check me-3">
+                                            <input class="form-check-input" type="checkbox" id="ishot" name="IsHot">
+                                            <label class="form-check-label" for="ishot">Đang Hot</label>
+                                        </div>
+                                        <div class="form-check me-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   id="isActive"
+                                                   name="IsActive"
+                                                   value="true"
+                                                   checked />
+                                            <label class="form-check-label" for="isActive">Công khai</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- TAB 2: Nội dung -->
+                                <div class="tab-pane fade" id="content-details" role="tabpanel">
+                                    <div class="form-group">
+                                        <label class="mb-3">Nội dung</label>
+                                        <textarea name="Desc" class="form-control ckeditor-content ckeditor"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type='submit' class='btn btn-success fw-semibold text-dark'>Thêm mới</button>
+                                <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            @{
+                int i = 1;
+            }
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Giá gốc</th>
+                        <th>Giá giảm</th>
+                        <th>Đang Hot</th>
+                        <th>Công khai</th>
+                        <th>Số lượng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-border-bottom-0">
+
+                    @foreach (var product in Model)
+                    {
+                        <tr data-id="@product.Id">
+                            <td>@i</td>
+
+                            <td>
+                                <img width="100" src="@product.Thumb" alt="@product.Title Thumb" />
+                            </td>
+
+                            <td width="250px">@product.Title</td>
+
+                            <td>
+                                @if (product.CategoryId != null)
+                                {
+                                    @(product.Category?.Title)
+                                }
+                                else
+                                {
+                                    <span>Chưa chọn danh mục</span>
+                                }
+                            </td>
+
+                            <td>@string.Format("{0:N0}", product.OriginPrice) VNĐ</td>
+                            <td>@string.Format("{0:N0}", product.DiscountPrice) VNĐ</td>
+
+                            <td>
+                                @if (product.IsHot == true)
+                                {
+                                    <i class='bx bxs-circle text-success'></i>
+                                }
+                                else
+                                {
+                                    <i class='bx bxs-circle text-danger'></i>
+                                }
+                            </td>
+
+                            <td>
+                                @if (product.IsActive == true)
+                                {
+                                    <i class='bx bxs-circle text-success'></i>
+                                }
+                                else
+                                {
+                                    <i class='bx bxs-circle text-danger'></i>
+                                }
+                            </td>
+                            <td>@product.Amounts</td>
+
+                            <td>
+                                <button type="button"
+                                        data-url="@Url.Action("Delete", "Products", new { id = product.Id })"
+                                        data-id="@product.Id"
+                                        class="btn btn-danger btnDeleteAsk me-2 px-2 py-1 fw-bolder"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">
+
+                                    Xóa
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-info btnEditProduct text-dark px-2 py-1 fw-bolder"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editProduct-@product.Id">
+                                    Sửa
+                                </button>
+
+                            </td>
+                        </tr>
+                        i++;
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+        @foreach (var product in Model)
+        {
+            <div class="modal fade" id="editProduct-@product.Id" tabindex="-1" style="overflow-x:hidden !important">
+                <div class="modal-dialog" style="max-width: 1440px">
+                    <div class="modal-content">
+                        <div class="modal-header border-bottom">
+                            <h1 class="modal-title fs-5">Chỉnh sửa sản phẩm: @product.Title</h1>
+                        </div>
+
+                        <div class="nav mt-3 d-flex justify-content-center" id="nav-tab-@product.Id" role="tablist">
+                            <button class="nav-link fw-bold active me-3"
+                                    id="basic-info-tab-@product.Id"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#basic-info-@product.Id"
+                                    type="button">
+                                Thông tin cơ bản
+                            </button>
+
+                            <button class="nav-link fw-bold"
+                                    id="content-details-tab-@product.Id"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#content-details-@product.Id"
+                                    type="button">
+                                Nội dung chi tiết
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <form class="form-edit" id="form-edit-product-@product.Id" method="post"
+                                  enctype="multipart/form-data"
+                                  action="@Url.Action("Edit", "ProductManagement", new { area = "Admin", id = product.Id })">
+                                @Html.AntiForgeryToken()
+
+                                <div class="tab-content">
+
+                                    <!-- TAB 1 -->
+                                    <div class="tab-pane fade show active" id="basic-info-@product.Id">
+
+                                        <!-- Upload hình -->
+                                        <div class="mb-3 image-gallery">
+                                            <label class="form-label">Ảnh</label>
+                                            <input type="file"
+                                                   class="file-input"
+                                                   name="Thumb"
+                                                   id="file-input-@product.Id"
+                                                   multiple
+                                                   onchange="previewImages(event, '@product.Id')">
+
+                                            <div class="image-preview" id="image-preview-@product.Id">
+                                                <img src="@product.Thumb" width="150" />
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Tên sản phẩm</label>
+                                            <input type="text"
+                                                   class="form-control title"
+                                                   name="Title"
+                                                   id="title-edit-@product.Id"
+                                                   value="@product.Title" />
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Slug</label>
+                                            <input type="text"
+                                                   class="form-control slug"
+                                                   name="Slug"
+                                                   id="slug-edit-@product.Id"
+                                                   value="@product.Slug" />
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Danh mục</label>
+                                            <select name="CategoryId" class="form-select">
+                                                <option value="">Chọn danh mục</option>
+                                                @foreach (var cate in ViewBag.Category)
+                                                {
+                                                    <option value="@cate.Id" @(cate.Id == product.CategoryId ? "selected" : "")>
+                                                        @cate.Title
+                                                    </option>
+                                                }
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex mb-3">
+                                            <div class="me-3">
+                                                <label class="form-label">Giá gốc</label>
+                                                <input type="text" class="form-control" name="OriginPrice" value="@product.OriginPrice" />
+                                            </div>
+
+                                            <div class="me-3">
+                                                <label class="form-label">Giá giảm</label>
+                                                <input type="text" class="form-control" name="DiscountPrice" value="@product.DiscountPrice" />
+                                            </div>
+
+                                            <div class="me-3">
+                                                <label class="form-label">Số lượng</label>
+                                                <input type="number" class="form-control" name="Amounts" value="@product.Amounts" />
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex mb-3">
+                                            <label class="me-3">
+                                                <input class="form-check-input" type="checkbox" name="IsHot" @(product.IsHot ? "checked" : "") />
+                                                Hot
+                                            </label>
+
+                                            <label class="me-3">
+                                                <input class="form-check-input" type="checkbox" name="IsActive" value="true" @(product.IsActive ? "checked" : "") />
+                                                Công khai
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- TAB 2 -->
+                                    <div class="tab-pane fade" id="content-details-@product.Id">
+                                        <label class="mb-2">Nội dung</label>
+                                        <textarea name="Desc" class="form-control ckeditor" >@product.Desc</textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- Modal Delete -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Bạn có chắc chắn muốn xóa?</h1>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="btnDeleteConfirm" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let deleteProductId = null;
+
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("btnDeleteAsk")) {
+            deleteProductId = e.target.getAttribute("data-id");
+        }
+
+        if (e.target.id === "btnDeleteConfirm" && deleteProductId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            fetch(`/Admin/ProductManagement/Delete/${deleteProductId}`, {
+                method: "POST",
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+            .then(res => {
+                if (res.ok) location.reload();
+                else alert("Xóa thất bại!");
+            });
+        }
+    });
+</script>

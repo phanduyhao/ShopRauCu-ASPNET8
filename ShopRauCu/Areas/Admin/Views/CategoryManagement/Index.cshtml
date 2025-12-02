@@ -1,0 +1,255 @@
+﻿@model IEnumerable<ShopRauCu.Models.Category>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Danh sách danh mục";
+}
+
+<div>
+    <h3 class="fw-bold text-primary py-3 mb-4">@ViewData["Title"]</h3>
+
+    @if (TempData["modelErrors"] != null)
+    {
+        <pre>@TempData["modelErrors"]</pre>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger mt-2">
+            @TempData["error"]
+        </div>
+    }
+
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success mt-2">
+            @TempData["success"]
+        </div>
+    }
+
+    <div class="card">
+        <div class="d-flex p-4 justify-content-between">
+            <button type="button" class="btn btn-success text-dark px-2 py-1 fw-bolder"
+                    data-bs-toggle="modal" data-bs-target="#createCategory">
+                Thêm mới
+            </button>
+        </div>
+
+        <!-- Modal Create -->
+        <div class="modal fade" id="createCategory" tabindex="-1" aria-labelledby="createCategoryLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Thêm mới danh mục</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="form_add_category" method="post"
+                              action="@Url.Action("Create", "CategoryManagement", new { area = "Admin" })"
+                              class="form-create"
+                              enctype="multipart/form-data">
+                            <!-- Thêm enctype -->
+                            @Html.AntiForgeryToken()
+
+                            <div class="mb-3">
+                                <label class="form-label">Ảnh đại diện (Thumb)</label>
+                                <input type="file" name="ThumbFile" class="file-input" id="file-input-form_post_store" multiple onchange="previewImages(event, 'form_cate_store')">
+                                <div class="image-preview" id="image-preview-form_cate_store"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tiêu đề danh mục</label>
+                                <input id="title-store" type="text" class="form-control input-field" placeholder="Nhập tiêu đề danh mục"
+                                       name="Title" data-require="Mời nhập tiêu đề danh mục" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Slug</label>
+                                <input id="slug-store" type="text" class="form-control input-field" placeholder="Nhập slug"
+                                       name="Slug" data-require="Mời nhập slug danh mục" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Danh mục cha</label>
+                                <select class="form-select" name="ParentId">
+                                    <option value="">-- Không có --</option>
+                                    @foreach (var cat in ViewBag.CateParents)
+                                    {
+                                        <option value="@cat.Id">@cat.Title</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success fw-semibold text-dark">Thêm mới</button>
+                                <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end modal create -->
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ảnh</th>
+                        <th>Tiêu đề</th>
+                        <th>Slug</th>
+                        <th>Danh mục cha</th>
+                        <th>Thời gian tạo</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-border-bottom-0">
+                    @foreach (var cat in Model)
+                    {
+                        <tr data-id="@cat.Id">
+                            <td>@cat.Id</td>
+                            <td>
+                                <img src="@cat.Thumb" width="100" class="img-fluid" />
+                            </td>
+                            <td>@cat.Title</td>
+                            <td>@cat.Slug</td>
+                            <td>@cat.Parent?.Title</td>
+                            <td>@cat.CreatedAt</td>
+                            <td>
+                                <button type="button"
+                                        class="btn btn-danger btnDeleteAsk px-2 me-2 py-1 fw-bolder"
+                                        data-id="@cat.Id"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal">
+                                    Xóa
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-info btnEditCategory text-dark px-2 py-1 fw-bolder"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editCategory-@cat.Id">
+                                    Sửa
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @foreach (var cat in Model)
+        {
+            <!-- Modal Edit -->
+            <div class="modal fade" id="editCategory-@cat.Id" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Chỉnh sửa danh mục</h1>
+                        </div>
+
+                        <div class="card-body">
+                            <form id="form_add_category-@cat.Id" method="post"
+                                  action="@Url.Action("Edit", "CategoryManagement", new { area = "Admin", id = cat.Id })"
+                                  class="form-edit"
+                                  enctype="multipart/form-data">
+
+                                @Html.AntiForgeryToken()
+                                <div class="mb-3 d-flex flex-column image-gallery" id="image-gallery-@cat.Id">
+                                    <label class='form-label'
+                                           for='basic-default-fullname'>Ảnh</label>
+                                    <input type="file" name="thumb" class="file-input" id="file-input-@cat.Id" multiple onchange="previewImages(event, @cat.Id)">
+                                    <div class="image-preview" id="image-preview-@cat.Id">
+                                        <img src="@cat.Thumb" width="150" alt="Alternate Text" />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tiêu đề danh mục</label>
+                                    <input type="text"
+                                           class="form-control title input-field"
+                                           name="Title"
+                                           value="@cat.Title"
+                                           id="title-edit-@cat.Id"
+                                           data-require="Mời nhập tiêu đề danh mục" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Slug</label>
+                                    <input type="text"
+                                           class="form-control slug input-field"
+                                           name="Slug"
+                                           id="slug-edit-@cat.Id"
+                                           value="@cat.Slug" data-require="Mời nhập Slug danh mục" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Danh mục cha</label>
+                                    <select class="form-select" name="ParentId">
+                                        <option value="">-- Không có --</option>
+                                        @foreach (var p in ViewBag.CateParents)
+                                        {
+                                            <option value="@p.Id" @(p.Id == cat.ParentId ? "selected" : "")>@p.Title</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success text-dark">Cập nhật</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!-- Modal Delete -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Bạn có chắc chắn muốn xóa?</h1>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="btnDeleteConfirm" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let deleteCategoryId = null;
+
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("btnDeleteAsk")) {
+            deleteCategoryId = e.target.getAttribute("data-id");
+        }
+
+        if (e.target.id === "btnDeleteConfirm" && deleteCategoryId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            fetch(`/Admin/CategoryManagement/Delete/${deleteCategoryId}`, {
+                method: "POST",
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+            .then(res => {
+                if (res.ok) location.reload();
+                else alert("Xóa thất bại!");
+            });
+        }
+    });
+</script>
